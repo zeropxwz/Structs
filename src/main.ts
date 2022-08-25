@@ -1,42 +1,70 @@
+class Nodeee {
+    value: any 
+    next:  object | null
 
-
-
-
-
-class HashTable {
-
-    table: Array<any> = []
-
-    hashF(key: string): number {
-
-        let hash: number = 0
-
-        for (let i = 0; i < key.length; i++) {
-            hash += key.charCodeAt(i) * i 
-        }
-
-        return hash
-    }
-
-    add(key: string, value: any): void {
-
-        let index: number = this.hashF(`${key}`)
-
-        if (!this.table[index]) {
-             this.table[index] = [key, value]
-        }
-    }
-
-    get(key: string): any {
-        let index: number = this.hashF(`${key}`)
-
-        if (!this.table[index]) {
-            return null
-        }
-        else {
-            return this.table[index][1]
-        }
+    constructor (value: any) {
+        this.value = value
+        this.next  = null
     }
 }
 
-const person = new HashTable()
+class LinkedList {
+    size: number 
+    root: any | null    
+
+    constructor () {
+        this.size = 0
+        this.root = null
+    }
+
+    add (value: any): boolean {
+        if (this.size === 0) {
+            this.root = new Nodeee(value)
+            this.size++
+
+            return true
+        }
+
+        let node = this.root
+
+        while (node.next) {
+            node = node.next
+        }
+
+        node.next = new Nodeee(value)
+        this.size++
+
+        return true
+    }
+
+
+
+    print (): void {
+        let result: Array<any> = []
+
+        let node = this.root
+
+        while (node.next) {
+            result.push(node)
+            node = node.next
+        }
+
+        console.log(result)
+    }
+
+    getSize (): number {
+        return this.size
+    }
+}
+
+
+
+ 
+const x = new LinkedList()
+
+x.add('abc')
+x.add('xwz')
+x.add('123')
+x.add('890')
+
+x.print()
