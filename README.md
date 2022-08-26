@@ -1,3 +1,6 @@
+
+<img src="/assets/structs.png">
+
 ### Хеш таблица  
 
 ##### хеш таблица на TypeScript:  
