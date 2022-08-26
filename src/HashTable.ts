@@ -68,4 +68,3 @@ class HashTable {
     }
 }
 
-const person = new HashTable()

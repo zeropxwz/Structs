@@ -48,12 +48,3 @@ class LinkedList {
 
 
 
- 
-const x = new LinkedList()
-
-x.add('abc')
-x.add('xwz')
-x.add('123')
-x.add('890')
-
-x.print() 
