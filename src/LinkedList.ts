@@ -9,13 +9,8 @@ class Nodeee {
 }
 
 class LinkedList {
-    size: number 
-    root: any | null    
-
-    constructor () {
-        this.size = 0
-        this.root = null
-    }
+    size: number     = 0
+    root: any | null = null    
 
     add (value: any): boolean {
         if (this.size === 0) {
@@ -37,8 +32,6 @@ class LinkedList {
         return true
     }
 
-
-
     print (): void {
         let result: Array<any> = []
 
@@ -50,10 +43,6 @@ class LinkedList {
         }
 
         console.log(result)
-    }
-
-    getSize (): number {
-        return this.size
     }
 }
 
