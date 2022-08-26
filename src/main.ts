@@ -1,70 +1,88 @@
-class Nodeee {
-    value: any 
-    next:  object | null
+class HashTable {
 
-    constructor (value: any) {
-        this.value = value
-        this.next  = null
-    }
-}
 
-class LinkedList {
-    size: number 
-    root: any | null    
+    table: Array<any> = []
 
-    constructor () {
-        this.size = 0
-        this.root = null
+    
+    hash (key: string): number {
+
+        let hash: number = 0
+
+        for (let i = 0; i < key.length; i++) {
+            hash += key.charCodeAt(i) * i 
+        }
+
+        return hash
     }
 
-    add (value: any): boolean {
-        if (this.size === 0) {
-            this.root = new Nodeee(value)
-            this.size++
+    add (key: string, value: any): boolean {
+
+        let index: number = this.hash(`${key}`)
+
+        if (!this.table[index]) {
+             this.table[index] = [key, value]
 
             return true
         }
-
-        let node = this.root
-
-        while (node.next) {
-            node = node.next
+        else {
+            return false
         }
-
-        node.next = new Nodeee(value)
-        this.size++
-
-        return true
     }
 
+    get (key: string): null | any {
 
+        let index: number = this.hash(`${key}`)
 
-    print (): void {
-        let result: Array<any> = []
-
-        let node = this.root
-
-        while (node.next) {
-            result.push(node)
-            node = node.next
+        if (!this.table[index]) {
+            return null
         }
-
-        console.log(result)
+        else {
+            return this.table[index][1]
+        }
     }
 
-    getSize (): number {
-        return this.size
+    del (key: string): boolean {
+
+        let index: number = this.hash(`${key}`)
+
+        if (!this.table[index]) {
+            return false
+        }
+        else {
+            delete this.table[index]
+            return true
+        }
+    }
+
+    print (key: string): void | null {
+
+        let index: number = this.hash(`${key}`)
+
+        if (!this.table[index]) {
+            return null
+        }
+        else {
+            console.log(this.table[index])
+        }
+
     }
 }
 
+const person = new HashTable()
 
+person.add('name',   'Petr')
+person.add('sename', 'Ivanov')
+person.add('age',     22)
 
- 
-const x = new LinkedList()
+console.log(
+    person.get('name'),
+    person.get('sename'),
+    person.get('age'),
+)
 
-x.add('abc')
-x.add('xwz')
-x.add('123')
-x.add('890')
+console.log(
+    person.get('name'),
+    person.get('sename'),
+    person.get('age'),
+)
 
-x.print()
