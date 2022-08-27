@@ -1,80 +1,53 @@
+let data = [
+    'Petr',
+    'Ivan',
+    'Oleg',
+    'Egor',
+    'Ogor',
+    'Nikolai'
+]
 
-class node {
-    constructor () {
-        
-    }
+
+
+
+function push (list: Array<any>, value: any): void {
+    list[list.length] = value
 }
 
+function pop (list: Array<any>): any {
+    list[list.length - 1] = undefined
+    return list
+}
 
-class LinkedList {
+function unshift (list: Array<any>, value: any): Array<any> {
 
-    head: any | null
-    tail: any | null 
+    const result: Array<any> = []
+    
+    for (let i = 0; i < list.length; i++) {
 
-    constructor () {
-        this.head = null
-        this.tail = null
-    }
-
-    append (value: any): void {
-
-        const node = {value: value, next: null}
-
-        if (this.head === null) {
-            this.head = node
-            this.tail = node
+        if (i === 0) {
+            push(result, value)
         }
         else {
-            this.tail 
-                ? this.tail.next = node 
-                : this.tail.next = null 
-
-            this.tail = node
+            push(result, list[i])
         }
     }
 
-    prepend (value: any): void {
+    return result
+}
 
-        const node = {value: value, next: this.head}
+function shift (list: Array<any>): Array<any> {
 
-        if (this.head === null) {
-            this.head = node
-            this.tail = node    
-        }
-        else {
-            this.head = node    
-        }
+    const result: Array<any> = []
+
+
+    for (let i = 1; i < list.length; i++) {
+        result[i - 1] = list[i]
     }
 
     
-    printHEAD(): void {
-        console.log(this.head.value)
-    }
-    printTAIL(): void {
-        console.log(this.tail.value)
-    }
-    
-    // toArray (): Array<any> {
 
-    //     let result  = []
-    //     let current = this.head
-
-    //     while (current) {
-    //         result.push(current.value)
-    //         current = current.next
-    //     }
-
-    //     return result
-    // }
+    return result
 }
 
-const x = new LinkedList()
 
-x.append('abc')
-x.append('xwz')
-x.append('123')
-
-// console.log(x)
-
-x.printHEAD()
-x.printTAIL()
