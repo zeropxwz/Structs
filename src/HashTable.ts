@@ -1,9 +1,11 @@
 class HashTable {
 
-
     table: Array<any> = []
 
-    
+    constructor () {
+
+    }
+
     hash (key: string): number {
 
         let hash: number = 0
@@ -29,18 +31,6 @@ class HashTable {
         }
     }
 
-    get (key: string): null | any {
-
-        let index: number = this.hash(`${key}`)
-
-        if (!this.table[index]) {
-            return null
-        }
-        else {
-            return this.table[index][1]
-        }
-    }
-
     del (key: string): boolean {
 
         let index: number = this.hash(`${key}`)
@@ -51,6 +41,18 @@ class HashTable {
         else {
             delete this.table[index]
             return true
+        }
+    }
+
+    get (key: string): null | any {
+
+        let index: number = this.hash(`${key}`)
+
+        if (!this.table[index]) {
+            return null
+        }
+        else {
+            return this.table[index][1]
         }
     }
 
