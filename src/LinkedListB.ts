@@ -59,3 +59,5 @@ class LinkedList {
     //     return result
     // }
 }
+
+export default LinkedList

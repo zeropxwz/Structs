@@ -3,75 +3,42 @@
 
 
 
+import LinkedList from "./LinkedListB";
 
-class DynamicArray {
 
-    data: Array<any> = []
 
-    constructor (...data: any) {
-        for (let i = 0; i < data.length; i++) {
-            this.data[i] = data[i]
-        }
+class Stack {
+
+    data = new LinkedList()
+
+
+    push (value: any): void {
+        this.data.append(value)
     }
 
-    // Methods
-    // O(1)
-    addToEnd (value: any): void {
-        this.data[this.data.length] = value
-    }
+    pop (): any {
 
-    // O(1)
-    delToEnd (): any {
+        const result: any = this.data.tail
 
-        let index:  number = this.data.length -1
-
-        let result: any  = this.data[index] 
-        this.data[index] = undefined
+        // this.data.delete()
 
         return result
     }
 
-    // O(n)
-    addToStart (value: any): void {
-
-        for (let i = this.data.length; i >= 0; i-- ) {
-            this.data[i + 1] = this.data[i]
-        }
-
-        this.data[0] = value
+    show (): void {
+        console.log(this.data)
     }
-
-    // O(n)
-    delToStart (): any {
-
-        const result: any = this.data[0]
-
-        for (let i = 0; i < this.data.length; i++) {
-            this.data[i] = this.data[i + 1]
-        }
-
-        return result
-    }
-
-    // O(n)
-    insert(value: any, index: number): void {
-
-        for (let i = this.data.length; i >= index; i--) {    
-            this.data[i + 1] = this.data[i]
-        }
-
-        this.data[index] = value
-    }
-
-    // O(1)
-    get (index: number): any {
-        return this.data[index]
-    }
-
-    show (): void {console.log(this.data)}
 }
 
 
+const x = new Stack()
+
+
+x.push('xwz')
+x.push('abc')
+x.push('123')
+
+x.show()
 
 
 
