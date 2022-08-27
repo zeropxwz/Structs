@@ -16,7 +16,7 @@ class LinkedList {
         this.tail = null
     }
 
-    add (value: any): void {
+    append (value: any): void {
 
         const node = {value: value, next: null}
 
@@ -33,7 +33,7 @@ class LinkedList {
         }
     }
 
-    pre (value: any): void {
+    prepend (value: any): void {
 
         const node = {value: value, next: this.head}
 
@@ -46,19 +46,35 @@ class LinkedList {
         }
     }
 
-    toArray (): Array<any> {
-
-        let result  = []
-        let current = this.head
-
-        while (current) {
-            result.push(current.value)
-            current = current.next
-        }
-
-        return result
+    
+    printHEAD(): void {
+        console.log(this.head.value)
     }
+    printTAIL(): void {
+        console.log(this.tail.value)
+    }
+    
+    // toArray (): Array<any> {
+
+    //     let result  = []
+    //     let current = this.head
+
+    //     while (current) {
+    //         result.push(current.value)
+    //         current = current.next
+    //     }
+
+    //     return result
+    // }
 }
 
 const x = new LinkedList()
 
+x.append('abc')
+x.append('xwz')
+x.append('123')
+
+// console.log(x)
+
+x.printHEAD()
+x.printTAIL()
