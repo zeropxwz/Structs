@@ -1,25 +1,25 @@
-import LinkedList from "./LinkedListB";
+// import LinkedList from "./LinkedListB";
 
-class Stack {
+// class Stack {
 
-    data = new LinkedList()
+//     data = new LinkedList()
 
-    push (value: any): void {
-        this.data.append(value)
-    }
+//     push (value: any): void {
+//         this.data.append(value)
+//     }
 
-    pop (): any {
-        const result: any = this.data.tail
+//     pop (): any {
+//         const result: any = this.data.tail
 
-        // this.data.delete()
+//         // this.data.delete()
 
-        return result
-    }
+//         return result
+//     }
 
-    show (): void {
-        console.log(this.data)
-    }
-}
+//     show (): void {
+//         console.log(this.data)
+//     }
+// }
 
 // class Stack {
 //     data: Array<any> = [] 
